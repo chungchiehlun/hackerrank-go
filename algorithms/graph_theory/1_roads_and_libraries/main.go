@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 )
 
 type QueryDetail struct {
@@ -36,16 +38,16 @@ func dfs(node int, graph Graph, visited VisitedVertex, count *int) {
 
 // https://stackoverflow.com/questions/28081486/golang-multiple-files-in-main-package
 func main() {
-	// bufin := bufio.NewReader(os.Stdin)
+	bufin := bufio.NewReader(os.Stdin)
 	var numOfQueries int
-	fmt.Scanf("%d\n", &numOfQueries)
+	fmt.Fscanf(bufin, "%d\n", &numOfQueries)
 
 	for i := 1; i <= numOfQueries; i++ {
 
 		var qd QueryDetail
 
 		// Initialize vertex
-		fmt.Scanf("%d %d %d %d\n", &qd.N, &qd.M, &qd.Clib, &qd.Croad)
+		fmt.Fscanf(bufin, "%d %d %d %d\n", &qd.N, &qd.M, &qd.Clib, &qd.Croad)
 		graph := make(Graph, qd.N)
 		visited := make(VisitedVertex, qd.N)
 
@@ -53,7 +55,7 @@ func main() {
 			// fmt.Println(i)
 			// The integers u, v describe a bidirectional road connecting cities.
 			var u, v int
-			fmt.Scanf("%d %d\n", &u, &v)
+			fmt.Fscanf(bufin, "%d %d\n", &u, &v)
 
 			graph.push(u-1, v-1)
 		}
