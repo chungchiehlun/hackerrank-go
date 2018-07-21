@@ -1,1 +1,1 @@
-## HackerRank
+Solve code challenges of algorithms and data structures by using the programming language Go.
